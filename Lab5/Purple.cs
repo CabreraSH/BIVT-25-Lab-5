@@ -639,17 +639,17 @@ namespace Lab5
 
             if (colsA != rowsB)
             {
-                return new int[0, 0];
+                return null;
             }
 
             answer = new int[rowsA, colsB];
 
-            int matrixSize = rowsA * colsB;
+            int Celtotal = rowsA * colsB;
 
-            for (int t = 0; t < totalCells; t++)
+            for (int index = 0; index < Celtotal; index++)
             {
-                int i = t / colsB;
-                int j = t % colsB;
+                int i = index / colsB;
+                int j = index % colsB;
 
                 int sum = 0;
 
@@ -687,42 +687,36 @@ namespace Lab5
             //---------------------------------------------------------------------------------------------------------------------------------------------
 
 
-            answer = new int[matrix.GetLength(0)][];
-
             int rows = matrix.GetLength(0);
             int cols = matrix.GetLength(1);
 
+            answer = new int[rows][];
+
             for (int i = 0; i < rows; i++)
             {
-                int positiveCount = 0;
+                int count = 0;
+
                 for (int j = 0; j < cols; j++)
                 {
                     if (matrix[i, j] > 0)
                     {
-                        positiveCount++;
+                        count++;
                     }
                 }
 
-                if (count == 0)
-                {
-                    answer[i] = new int[0];
-                    continue;
-                }
-
-                int[] rows = new int[positiveCount];
+                int[] row = new int[count];
                 int index = 0;
 
                 for (int j = 0; j < cols; j++)
                 {
                     if (matrix[i, j] > 0)
                     {
-                        rows[index] = matrix[i, j];
+                        row[index] = matrix[i, j];
                         index++;
                     }
                 }
 
-                answer[i] = rows;
-                
+                answer[i] = row;
             }
 
 
@@ -788,6 +782,7 @@ namespace Lab5
         }
     }
 }
+
 
 
 
