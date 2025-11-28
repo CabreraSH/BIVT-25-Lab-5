@@ -644,9 +644,9 @@ namespace Lab5
 
             answer = new int[rowsA, colsB];
 
-            int Celtotal = rowsA * colsB;
+            int totalCells = rowsA * colsB;
 
-            for (int index = 0; index < Celtotal; index++)
+            for (int index = 0; index < totalCells; index++)
             {
                 int i = index / colsB;
                 int j = index % colsB;
@@ -769,7 +769,7 @@ namespace Lab5
                         int row = index / n;
                         int col = index % n;
 
-                        result[row, col] = array[i][j];
+                        answer[row, col] = array[i][j];
                         index++;
                     }
                 }
@@ -782,6 +782,7 @@ namespace Lab5
         }
     }
 }
+
 
 
 
