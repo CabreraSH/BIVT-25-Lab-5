@@ -744,21 +744,20 @@ namespace Lab5
 
             //---------------------------------------------------------------------------------------------------------------------------------------------
 
+            if (array == null)
+            {
+                return null;
+            }
+
             int total = 0;
 
             for (int i = 0; i < array.Length; i++)
             {
-                total += array[i].Length;
+                if (array[i] != null)
+                {
+                    total += array[i].Length;
+                }
             }
-
-            // Dimension of the square matrix
-            int n = (int)Math.Ceiling(Math.Sqrt(total));
-
-            answer = new int[n, n];
-
-            int index = 0;
-            int row = 0;
-            int col = 0;
 
             int size = 0;
 
@@ -777,6 +776,8 @@ namespace Lab5
             {
                 return answer;
             }
+
+            int index = 0;
 
             for (int i = 0; i < array.Length; i++)
             {
@@ -809,6 +810,7 @@ namespace Lab5
         }
     }
 }
+
 
 
 
