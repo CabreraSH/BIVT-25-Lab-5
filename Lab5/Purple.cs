@@ -137,7 +137,7 @@ namespace Lab5
 
             //---------------------------------------------------------------------------------------------------------------------------------------------------
 
-            int n = matrix.GetLength(0)
+            int n = matrix.GetLength(0);
             int m = matrix.GetLength(1);
             
             int[,] answer = new int[n, m + 1];
@@ -628,7 +628,7 @@ namespace Lab5
                 return new int[0, 0];
             }
 
-            answer = int[rowsA, colsB];
+            answer = new int[rowsA, colsB];
 
             int matrixSize = rowsA * colsB;
 
@@ -673,7 +673,7 @@ namespace Lab5
             //---------------------------------------------------------------------------------------------------------------------------------------------
 
 
-            answer = int[matrix.GetLength(0)][];
+            answer = new int[matrix.GetLength(0)][];
 
             int rows = matrix.GetLength(0);
             int cols = matrix.GetLength(1);
@@ -746,7 +746,7 @@ namespace Lab5
             // Dimension of the square matrix
             int n = (int)Math.Ceiling(Math.Sqrt(elementTotal));
 
-            answer = int[n, n];
+            answer = new int[n, n];
 
             int index = 0;
             int row = 0;
@@ -774,4 +774,5 @@ namespace Lab5
         }
     }
 }
+
 
