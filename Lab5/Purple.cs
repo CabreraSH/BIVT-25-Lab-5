@@ -778,8 +778,6 @@ namespace Lab5
                 return answer;
             }
 
-            int index = 0;
-
             for (int i = 0; i < array.Length; i++)
             {
                 int[] row = array[i];
@@ -811,6 +809,7 @@ namespace Lab5
         }
     }
 }
+
 
 
 
