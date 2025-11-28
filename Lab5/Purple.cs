@@ -744,15 +744,15 @@ namespace Lab5
 
             //---------------------------------------------------------------------------------------------------------------------------------------------
 
-            int elementTotal = 0;
+            int total = 0;
 
             for (int i = 0; i < array.Length; i++)
             {
-                elementTotal += array[i].Length;
+                total += array[i].Length;
             }
 
             // Dimension of the square matrix
-            int n = (int)Math.Ceiling(Math.Sqrt(elementTotal));
+            int n = (int)Math.Ceiling(Math.Sqrt(total));
 
             answer = new int[n, n];
 
@@ -760,18 +760,47 @@ namespace Lab5
             int row = 0;
             int col = 0;
 
+            int size = 0;
+
+            if (total > 0)
+            {
+                size = (int)Math.Sqrt(total);
+                if (size * size < total)
+                {
+                    size++;
+                }
+            }
+
+            answer = new int[size, size];
+
+            if (size == 0)
+            {
+                return answer;
+            }
+
+            int index = 0;
+
             for (int i = 0; i < array.Length; i++)
             {
-                for (int j = 0; j < array[i].Length; j++)
-                {
-                    if (index < Math.Pow(n, 2) )
-                    {
-                        int row = index / n;
-                        int col = index % n;
+                int[] row = array[i];
 
-                        answer[row, col] = array[i][j];
-                        index++;
+                if (row == null)
+                {
+                    continue;
+                }
+
+                for (int j = 0; j < row.Length; j++)
+                {
+                    if (index >= size * size)
+                    {
+                        break;
                     }
+
+                    int rowIndex = index / size;
+                    int colIndex = index % size;
+
+                    answer[rowIndex, colIndex] = row[j];
+                    index++;
                 }
             }
 
@@ -782,6 +811,7 @@ namespace Lab5
         }
     }
 }
+
 
 
 
