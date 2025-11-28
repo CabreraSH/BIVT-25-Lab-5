@@ -44,23 +44,23 @@ namespace Lab5
 
             //---------------------------------------------------------------------------------------------------------------------------------------------
 
-            int[] answer = new int[matrix.GetLength(1)];
-            int index = 0;
-            
-            for (int j = 0; j < matrix.GetLength(1); j++)
-            {
-                int negNumber = 0;
-                
-                 for (int i = 0; i < matrix.GetLength(0); i++)
-                 {
-                     if (matrix[i, j] < 0)
-                     {
-                         negNumber++;
-                     }
-                 }
+            int rows = matrix.GetLength(0);
+            int cols = matrix.GetLength(1);
 
-                answer[index] = negNumber;
-                index++;
+            answer = new int[cols];
+
+            for (int j = 0; j < cols; j++)
+            {
+                int count = 0;
+                for (int i = 0; i < rows; i++)
+                {
+                    if (matrix[i, j] < 0)
+                    {
+                        count++;
+                    }
+                }
+
+                answer[j] = count;
             }
 
 
@@ -137,30 +137,44 @@ namespace Lab5
 
             //---------------------------------------------------------------------------------------------------------------------------------------------------
 
-            int n = matrix.GetLength(0);
-            int m = matrix.GetLength(1);
-            
-            int[,] answer = new int[n, m + 1];
-            
-            for (int i = 0; i < n; ++i)
+            int rows = matrix.GetLength(0);
+            int cols = matrix.GetLength(1);
+
+            if (cols == 0)
             {
-                int maxEle = matrix[i, 0], maxComp = 0;
-                for (int j = 1; j < m; ++j)
+                answer = new int[rows, 0];
+                return answer;
+            }
+
+            answer = new int[rows, cols + 1];
+
+            for (int i = 0; i < rows; i++)
+            {
+                int maxIndex = 0;
+                int maxValue = matrix[i, 0];
+
+                for (int j = 1; j < cols; j++)
                 {
-                    if (maxi < matrix[i, j])
+                    if (matrix[i, j] > maxValue)
                     {
-                        maxEle = matrix[i, j];
-                        maxComp = j;
+                        maxValue = matrix[i, j];
+                        maxIndex = j;
                     }
                 }
-                for (int j = 0; j <= maxComp; ++j)
+
+                int newColumnIndex = 0;
+
+                for (int j = 0; j < cols; j++)
                 {
-                    answer[i, j] = matrix[i, j];
-                }
-                answer[i, maxComp + 1] = maxEle;
-                for (int j = maxComp + 2; j <= m; ++j)
-                {
-                    answer[i, j] = matrix[i, j - 1];
+                    answer[i, newColumnIndex] = matrix[i, j];
+
+                    if (j == maxIndex)
+                    {
+                        newColumnIndex++;
+                        answer[i, newColumnIndex] = matrix[i, j];
+                    }
+
+                    newColumnIndex++;
                 }
             }
 
@@ -774,5 +788,6 @@ namespace Lab5
         }
     }
 }
+
 
 
